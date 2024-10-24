@@ -6,7 +6,7 @@
 public class AStarPathFinder : IPathFinder
 {
     /// <summary>
-    /// The nodes that the path finder will search.
+    /// The nodes that the pathfinder will search.
     /// </summary>
     private readonly Node[] _nodes;
 
@@ -14,13 +14,10 @@ public class AStarPathFinder : IPathFinder
     /// Creates a new instance of the <see cref="AStarPathFinder"/> class.
     /// </summary>
     /// <param name="nodes">
-    /// The nodes that the path finder will search.
+    /// The nodes that the pathfinder will search.
     /// </param>
-    public AStarPathFinder(Node[] nodes)
-    {
-        _nodes = nodes;
-    }
-    
+    public AStarPathFinder(Node[] nodes) => _nodes = nodes;
+
     /// <summary>
     /// The node decorator is used to store additional information about a node during the search.
     /// </summary>
@@ -72,9 +69,9 @@ public class AStarPathFinder : IPathFinder
     {
         var nodeLookup = _nodes.ToDictionary(node => node, node => new NodeDecorator(node));
         
-        var endPosition = end.Position;
+        Position endPosition = end.Position;
         
-        var nodeCurrent = nodeLookup[start];
+        NodeDecorator nodeCurrent = nodeLookup[start];
         
         nodeCurrent.LocalDistance = 0;
         nodeCurrent.GlobalDistance = nodeCurrent.DistanceTo(endPosition);
@@ -84,7 +81,7 @@ public class AStarPathFinder : IPathFinder
         
         while(queue.Count > 0)
         {
-            var node = queue.Dequeue();
+            Node node = queue.Dequeue();
             
             nodeCurrent = nodeLookup[node];
             
@@ -94,7 +91,7 @@ public class AStarPathFinder : IPathFinder
             
             foreach (var connection in node.Connections)
             {
-                var connectionItem = nodeLookup[connection.Node];
+                NodeDecorator connectionItem = nodeLookup[connection.Node];
                 
                 if (connectionItem.IsVisited) continue;
              

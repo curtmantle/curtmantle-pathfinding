@@ -13,28 +13,13 @@ public class Node
     
     public IReadOnlyCollection<NodeConnection> Connections => _connections;
 
-    public void AddConnection(NodeConnection connection)
-    {
-        _connections.Add(connection);
-    }
-    
-    public double DistanceTo(Node node)
-    {
-        return Position.DistanceTo(node.Position);
-    }
-    
-    public double DistanceTo(Position position)
-    {
-        return Position.DistanceTo(position);
-    }
-    
-    public override int GetHashCode()
-    {
-        return Position.GetHashCode();
-    }
+    public void AddConnection(NodeConnection connection) => _connections.Add(connection);
 
-    public override string ToString()
-    {
-        return $"X: {Position.X}, Y: {Position.Y}";
-    }
+    public double DistanceTo(Node node) => Position.DistanceTo(node.Position);
+
+    public double DistanceTo(Position position) => Position.DistanceTo(position);
+
+    public override int GetHashCode() => Position.GetHashCode();
+
+    public override string ToString() => $"X: {Position.X}, Y: {Position.Y}";
 }

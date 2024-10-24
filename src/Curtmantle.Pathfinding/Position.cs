@@ -1,6 +1,6 @@
 ﻿namespace Curtmantle.Pathfinding;
 
-public record struct Position(double X, double Y)
+public readonly record struct Position(double X, double Y)
 {
     /// <summary>
     /// Calculates the distance between two positions.

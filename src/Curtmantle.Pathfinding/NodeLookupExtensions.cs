@@ -12,7 +12,7 @@ public static class NodeLookupExtensions
     public static IReadOnlyList<Node> GetPath<T>(this IDictionary<Node, T> nodeLookup, Node end) where T: IPathFinderNode
     {
         var path = new List<Node>();
-        var currentNode = end;
+        Node currentNode = end;
         while (currentNode != null)
         {
             path.Add(currentNode);

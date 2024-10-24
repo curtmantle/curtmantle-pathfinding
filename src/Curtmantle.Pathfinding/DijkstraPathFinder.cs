@@ -39,7 +39,7 @@ public class DijkstraPathFinder : IPathFinder
             // Take the next nearest element
             if (!queue.TryDequeue(out var node, out var distance)) break;
             
-            var currentItem = nodeLookup[node];
+            NodeDecorator currentItem = nodeLookup[node];
             
             currentItem!.IsVisited = true;
             
@@ -47,9 +47,9 @@ public class DijkstraPathFinder : IPathFinder
             if (distance > currentItem.Distance) continue;
 
             // Check all the connections
-            foreach (var connection in node.Connections)
+            foreach (NodeConnection connection in node.Connections)
             {
-                var connectionItem = nodeLookup[connection.Node];
+                NodeDecorator connectionItem = nodeLookup[connection.Node];
                 
                 if (connectionItem!.IsVisited) continue;
              
